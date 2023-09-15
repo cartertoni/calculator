@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+}
+
+.button-row {
+  display: flex;
+}
+
+.button {
+  display: flex;
+  flex: 0 0 140px;
+  height: 140px;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  font-size: 30px;
+  border: solid;
+  margin: 2px;
+}
