@@ -47,10 +47,10 @@ const setNumbers = e => {
 }
 
 const computeAnswer = () => {
-  if (symbol == 'subtract') return parseInt(num1) - parseInt(num2)
-  else if (symbol == 'add') return parseInt(num1) + parseInt(num2)
-  else if (symbol == 'divide') return parseInt(num1) / parseInt(num2)
-  else if (symbol == 'multiply') return parseInt(num1) * parseInt(num2)
+  if (symbol == 'subtract') return parseFloat(num1) - parseFloat(num2)
+  else if (symbol == 'add') return parseFloat(num1) + parseFloat(num2)
+  else if (symbol == 'divide') return parseFloat(num1) / parseFloat(num2)
+  else if (symbol == 'multiply') return parseFloat(num1) * parseFloat(num2)
 }
 
 const resetNumbers = () => {
