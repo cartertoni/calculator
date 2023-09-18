@@ -1,54 +1,89 @@
 let symbol = ''
 let num1 = ''
 let num2 = ''
+let result = 0
 
 const buttons = document.querySelectorAll('.button')
 
 buttons.forEach(button => button.addEventListener('click', e => handleClick(e)))
 
 const handleClick = e => {
-  if (Number.isInteger(parseInt(e.target.id))) setNumbers(e)
-  else {
-    if (e.target.id == 'equals') {
-      num1 = computeAnswer(e)
-      setDisplay(num1)
-      reset()
-    } else {
-      if (!symbol) {
-        symbol = e.target.id
-        setDisplay(e.target.innerText)
-      } else {
-        num1 = computeAnswer()
-        setDisplay(num1)
-        reset()
-      }
-    }
+  if (e.target.id == 'equals') {
+    result = computeAnswer()
+    setDisplay(result)
+    num1 = result
+    num2 = ''
+  } else if (e.target.id == 'clear') {
+    clearMemory()
+  } else if (Number.isInteger(parseInt(e.target.id))) {
+    setNumbers(e)
+  } else {
+    handleSymbol(e)
   }
 }
 
+// const setNumbers = e => {
+//   if (!symbol) {
+//     num1 = num1.concat(e.target.id)
+//     setDisplay(num1)
+//   } else {
+//     num2 = num2.concat(e.target.id)
+//     setDisplay(num2)
+//   }
+// }
+
 const setNumbers = e => {
-  if (!symbol) {
+  if (result) {
+    num2 = num2.concat(e.target.id)
+    setDisplay(num2)
+  } else if (!result && !symbol) {
     num1 = num1.concat(e.target.id)
     setDisplay(num1)
+    console.log(num1)
   } else {
     num2 = num2.concat(e.target.id)
     setDisplay(num2)
   }
 }
 
-const computeAnswer = e => {
+const computeAnswer = () => {
   if (symbol == 'subtract') return parseInt(num1) - parseInt(num2)
   else if (symbol == 'add') return parseInt(num1) + parseInt(num2)
   else if (symbol == 'divide') return parseInt(num1) / parseInt(num2)
   else if (symbol == 'multiply') return parseInt(num1) * parseInt(num2)
 }
 
-const reset = () => {
+const resetNumbers = () => {
+  num1 = ''
   num2 = ''
   symbol = ''
 }
 
 const setDisplay = value => {
   const display = document.querySelector('.display')
-  display.innerText = value
+  value || result == 0
+    ? (display.innerText = value)
+    : (display.innerText = 'ERROR')
+}
+
+const clearMemory = () => {
+  symbol = ''
+  num1 = ''
+  num2 = ''
+  result = 0
+  setDisplay('')
+}
+
+const handleSymbol = e => {
+  if (result && !num2) {
+    symbol = e.target.id
+  } else if (symbol) {
+    result = computeAnswer()
+    setDisplay(result)
+    num1 = result
+    num2 = ''
+    symbol = e.target.id
+  } else {
+    symbol = e.target.id
+  }
 }
