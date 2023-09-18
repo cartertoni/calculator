@@ -22,16 +22,6 @@ const handleClick = e => {
   }
 }
 
-// const setNumbers = e => {
-//   if (!symbol) {
-//     num1 = num1.concat(e.target.id)
-//     setDisplay(num1)
-//   } else {
-//     num2 = num2.concat(e.target.id)
-//     setDisplay(num2)
-//   }
-// }
-
 const setNumbers = e => {
   if (result) {
     num2 = num2.concat(e.target.id)
@@ -70,7 +60,7 @@ const clearMemory = () => {
   num1 = ''
   num2 = ''
   result = 0
-  setDisplay('')
+  setDisplay(result)
 }
 
 const handleSymbol = e => {
@@ -86,3 +76,5 @@ const handleSymbol = e => {
     symbol = e.target.id
   }
 }
+
+setDisplay(result)
