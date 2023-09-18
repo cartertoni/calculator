@@ -13,19 +13,25 @@ const handleClick = e => {
     setDisplay(result)
     num1 = result
     num2 = ''
+    symbol = ''
   } else if (e.target.id == 'clear') {
     clearMemory()
   } else if (Number.isInteger(parseInt(e.target.id))) {
-    setNumbers(e)
+    handleNumbers(e)
   } else {
     handleSymbol(e)
   }
+  console.log(`num1: ${num1} num2: ${num2} symbol: ${symbol} result: ${result}`)
 }
 
-const setNumbers = e => {
-  if (result) {
+const handleNumbers = e => {
+  if (result && symbol) {
     num2 = num2.concat(e.target.id)
     setDisplay(num2)
+  } else if (result && !symbol) {
+    clearMemory()
+    num1 = num1.concat(e.target.id)
+    setDisplay(num1)
   } else if (!result && !symbol) {
     num1 = num1.concat(e.target.id)
     setDisplay(num1)
