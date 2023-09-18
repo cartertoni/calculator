@@ -1,6 +1,6 @@
-let symbol,
-  num1,
-  num2 = ''
+let symbol = ''
+let num1 = ''
+let num2 = ''
 
 const buttons = document.querySelectorAll('.button')
 
@@ -14,17 +14,20 @@ const handleClick = e => {
       setDisplay(num1)
       reset()
     } else {
-      symbol = e.target.id
-      setDisplay(symbol)
+      if (!symbol) {
+        symbol = e.target.id
+        setDisplay(e.target.innerText)
+      } else {
+        num1 = computeAnswer()
+        setDisplay(num1)
+        reset()
+      }
     }
   }
 }
 
 const setNumbers = e => {
-  if (!num1) {
-    num1 = e.target.id
-    setDisplay(num1)
-  } else if (num1 && !symbol) {
+  if (!symbol) {
     num1 = num1.concat(e.target.id)
     setDisplay(num1)
   } else {

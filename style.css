@@ -8,6 +8,18 @@
   display: flex;
 }
 
+.display {
+  display: flex;
+  height: 140px;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: solid;
+  margin: 2px;
+  flex: 0 0 580px;
+  background-color: green;
+}
+
 .button {
   display: flex;
   flex: 0 0 140px;
