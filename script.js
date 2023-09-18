@@ -21,7 +21,6 @@ const handleClick = e => {
   } else {
     handleSymbol(e)
   }
-  console.log(`num1: ${num1} num2: ${num2} symbol: ${symbol} result: ${result}`)
 }
 
 const handleNumbers = e => {
