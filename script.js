@@ -39,7 +39,6 @@ const setNumbers = e => {
   } else if (!result && !symbol) {
     num1 = num1.concat(e.target.id)
     setDisplay(num1)
-    console.log(num1)
   } else {
     num2 = num2.concat(e.target.id)
     setDisplay(num2)
